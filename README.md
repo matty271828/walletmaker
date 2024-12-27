@@ -1,0 +1,171 @@
+# Airgapped Bitcoin Wallet Generator
+
+This repository contains the necessary files to create a secure, airgapped Bitcoin wallet using a Raspberry Pi. By using an airgapped system (never connected to the internet), we significantly reduce the risk of private key exposure.
+
+## Contents
+
+- Raspberry Pi OS image (.xz file)
+- BitAddress.org offline copy
+- Supporting documentation
+
+## Why Use an Airgapped System?
+
+Creating Bitcoin wallets on an internet-connected device poses security risks. By using an airgapped Raspberry Pi, we ensure that our private keys are generated in a completely isolated environment, protecting them from:
+- Malware
+- Keyloggers
+- Network-based attacks
+- Screen capture software
+
+## Required Hardware
+
+- Raspberry Pi (any model)
+- MicroSD card (8GB minimum)
+- USB keyboard
+- Display with HDMI input
+- Power supply for Raspberry Pi
+- USB drive for transferring files
+
+## Detailed Setup Instructions
+
+## Quick Workflow Overview
+
+1. **Initial Setup** (~30-60 minutes)
+   - Clone this repository (Warning: Large download due to OS image)
+   - Extract the Raspberry Pi OS (.xz) file
+   - Write OS to MicroSD card using Raspberry Pi Imager
+   
+2. **Hardware Setup** (~10 minutes)
+   - Insert MicroSD card into Raspberry Pi
+   - Connect keyboard and display
+   - Boot up and complete initial OS setup
+   
+3. **Wallet Creation** (~15 minutes)
+   - Copy BitAddress.org from USB to Pi
+   - Generate wallet offline
+   - Record private key securely
+   - Transfer public key to USB
+
+### 1. Preparing Your Files (On Your Regular Computer)
+
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/matty271828/walletmaker
+   ```
+   ⚠️ **Warning**: This repo is large (several GB) due to the included OS image.
+
+2. 2. **Download and Extract the Raspberry Pi OS Image**
+   1. Visit [Raspberry Pi OS Downloads](https://www.raspberrypi.com/software/operating-systems/)
+   
+   2. Download "Raspberry Pi OS (32-bit)"
+      - Choose the standard version with desktop environment
+      - NOT the "Lite" version (we need a browser)
+      - NOT the "Full" version (includes unnecessary software)
+      - Look for: `2023-12-11-raspios-bullseye-armhf.img.xz` (or newer version)
+   
+   3. Open Terminal and navigate to your download location:
+   ```bash
+   cd ~/Downloads  # or wherever you downloaded the file
+   ```
+
+   4. Extract the image:
+   ```bash
+   unxz 2023-12-11-raspios-bullseye-armhf.img.xz
+   ```
+
+   Note: The exact filename may differ based on when you download it. Use the filename from your download.
+
+   Why Standard Raspberry Pi OS?
+   - Includes desktop environment
+   - Comes with Chromium browser
+   - Has file manager for USB access
+   - Perfect balance between functionality and sizeraspios.img.xz
+     ```
+
+3. **Install Raspberry Pi Imager**
+    **macOS (using Homebrew):**
+    ```bash
+    brew install raspberry-pi-imager
+    ```
+
+    **Alternative Methods:**
+    - Download from [raspberrypi.com/software](https://www.raspberrypi.com/software/)
+    - Or get it from [github.com/raspberrypi/rpi-imager](https://github.com/raspberrypi/rpi-imager)
+
+4. **Prepare Your USB Drive**
+   1. Insert a USB drive into your computer
+   2. Format the USB drive:
+      - **Windows**: Right-click → Format → FAT32
+      - **Mac**: Use Disk Utility → Erase → MS-DOS (FAT)
+      - **Linux**: Use GParted or `mkfs.vfat` command
+
+5. **Copy Files to USB**
+   1. Create a folder called `bitcoin-wallet` on your USB drive
+   2. Copy these files into the folder:
+      - The BitAddress.org HTML file
+      - Any additional documentation you want to reference
+   
+   Note: Do NOT copy the .img file to the USB - this goes directly onto the SD card
+
+6. **Write the OS Image**
+   1. Insert your MicroSD card into your computer
+   2. Open Raspberry Pi Imager
+   3. Click "Choose OS"
+   4. Click "Use custom" and select your extracted .img file
+   5. Click "Choose Storage" and select your MicroSD card
+   6. Click "Write" and wait for the process to complete
+
+### 2. Setup the Raspberry Pi
+
+1. Remove the MicroSD card and insert it into your Raspberry Pi
+2. Keep the USB drive with BitAddress.org ready
+3. Ensure you have:
+   - A keyboard
+   - A display with HDMI cable
+   - The Raspberry Pi power supply
+
+When you boot the Raspberry Pi:
+1. Insert the USB drive
+2. Navigate to the USB drive
+3. Open BitAddress.org in the browser
+
+### 2. Generate Bitcoin Wallet
+
+1. Boot the Raspberry Pi (it will never connect to the internet)
+2. Open the included BitAddress.org HTML file in a browser
+3. Generate entropy by moving your mouse or typing random characters
+4. Once sufficient entropy is generated, your Bitcoin wallet will be created
+
+### 3. Securing Your Wallet
+
+Your wallet will consist of two important pieces:
+
+1. **Public Key (Bitcoin Address)**
+   - This is safe to share
+   - Use this to receive Bitcoin
+   - Can be transferred to an online device
+
+2. **Private Key**
+   - NEVER share this with anyone
+   - Grants complete control over your funds
+   - Store securely:
+     - Write it down on paper (recommended)
+     - Stamp it into metal
+     - Create multiple backup copies
+     - Store in different secure locations
+
+## Security Recommendations
+
+- Never connect the Raspberry Pi to the internet
+- Consider destroying or securely wiping the Raspberry Pi after wallet creation
+- Store private keys in multiple secure locations
+- Test sending and receiving small amounts before using for large amounts
+- Consider using a passphrase for additional security
+- Verify the BitAddress.org SHA256 checksum before use
+
+## Warning
+
+**IMPORTANT**: Loss of your private key means permanent loss of access to your Bitcoin. There is no "forgot password" option. Keep your private key secure and backed up.
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
