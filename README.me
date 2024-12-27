@@ -1,6 +1,6 @@
-# Airgapped Bitcoin Wallet Generator
+# WalletMaker - Airgapped Bitcoin Wallet Generator
 
-This repository contains the necessary files to create a secure, airgapped Bitcoin wallet using a Raspberry Pi. By using an airgapped system (never connected to the internet), we significantly reduce the risk of private key exposure.
+This repository contains the necessary workflow to create a secure Bitcoin paper wallet by generating keys on an airgapped Raspberry Pi. By using an airgapped system (never connected to the internet) to generate the keys, we significantly reduce the risk of private key exposure.
 
 ## Contents
 
@@ -25,9 +25,7 @@ Creating Bitcoin wallets on an internet-connected device poses security risks. B
 - Power supply for Raspberry Pi
 - USB drive for transferring files
 
-## Detailed Setup Instructions
-
-## Quick Workflow Overview
+## Setup Instructions
 
 1. **Initial Setup** (~30-60 minutes)
    - Clone this repository (Warning: Large download due to OS image)
@@ -51,11 +49,10 @@ Creating Bitcoin wallets on an internet-connected device poses security risks. B
    ```bash
    git clone https://github.com/matty271828/walletmaker
    ```
-   ⚠️ **Warning**: This repo is large (several GB) due to the included OS image.
 
-2. 2. **Download and Extract the Raspberry Pi OS Image**
+2. **Download and Extract the Raspberry Pi OS Image**
    1. Visit [Raspberry Pi OS Downloads](https://www.raspberrypi.com/software/operating-systems/)
-   
+
    2. Download "Raspberry Pi OS (32-bit)"
       - Choose the standard version with desktop environment
       - NOT the "Lite" version (we need a browser)
@@ -128,16 +125,20 @@ When you boot the Raspberry Pi:
 2. Navigate to the USB drive
 3. Open BitAddress.org in the browser
 
-### 2. Generate Bitcoin Wallet
+### 2. Generate Bitcoin Keys & Create Paper Wallet
 
-1. Boot the Raspberry Pi (it will never connect to the internet)
+1. Boot the Raspberry Pi (for maximum security, never connect it to the internet)
 2. Open the included BitAddress.org HTML file in a browser
 3. Generate entropy by moving your mouse or typing random characters
-4. Once sufficient entropy is generated, your Bitcoin wallet will be created
+4. Once sufficient entropy is generated, your Bitcoin keys will be created
+5. Carefully transcribe both keys onto paper to create your paper wallet
+   - Consider using high-quality paper
+   - Write clearly and verify all characters multiple times
+   - Make multiple paper copies for backup
 
-### 3. Securing Your Wallet
+### 3. Securing Your Paper Wallet
 
-Your wallet will consist of two important pieces:
+Your paper wallet (the physical document containing your keys) will consist of two important pieces:
 
 1. **Public Key (Bitcoin Address)**
    - This is safe to share
