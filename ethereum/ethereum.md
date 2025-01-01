@@ -96,6 +96,8 @@ Example output:
 To deposit funds to the account, purchase ETH from an exchange such as Coinbase or Binance and transfer it 
 to the account address.
 
+Use [etherscan](https://etherscan.io/address/0x83F7FB0849d8C8E45aFACCf25d0579191311919A) to verify the account balance. 
+
 # Step 5: Send funds from the account to another account. 
 
 Decrypt the account's private key by opening the keystore file:
