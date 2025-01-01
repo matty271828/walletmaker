@@ -2,8 +2,6 @@
 
 This guide outlines how to securely create an Ethereum paper wallet on a Raspberry Pi without connecting it to the internet. The process includes installing Geth, creating a new Ethereum account, and securely backing up your private key.
 
----
-
 ## Prerequisites
 
 - A Raspberry Pi running a Linux-based operating system.
@@ -95,6 +93,22 @@ Example output:
 
 # Step 4: Deposit Funds to the Account
 
-To deposit funds to the account, purchase ETH from an exchange such as Coinbase or Binance and transfer it to the account address.
+To deposit funds to the account, purchase ETH from an exchange such as Coinbase or Binance and transfer it 
+to the account address.
 
-# TODO: Step 5: Send funds from the account to another account. 
+# Step 5: Send funds from the account to another account. 
+
+Decrypt the account's private key by opening the keystore file:
+
+```
+geth account import /path/to/keystore/file
+```
+
+Enter the password for the account when prompted. After you enter the correct password, 
+the account will be unlocked, and you will be able to access the private key. Use the private key to send funds to 
+another address using a service such as Trust Wallet. 
+
+Note: Following this method you should consider your wallet's security as compromised. If wishing to move funds back into cold storage, 
+you should create a new account and move the funds to that account. 
+
+
